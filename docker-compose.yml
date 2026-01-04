@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./webapp/fantasyrally
+      dockerfile: server/Dockerfile
+    container_name: fantasyrally-api
+    environment:
+      - PORT=4000
+      - JWT_SECRET
+      - STRIPE_SECRET_KEY
+      - STRIPE_WEBHOOK_SECRET
+      - SUCCESS_URL
+      - CANCEL_URL
+    volumes:
+      - ./webapp/fantasyrally/server/data.db:/srv/app/data.db
+      - ./webapp/fantasyrally/server/public:/srv/app/public
+    ports:
+      - "4000:4000"
+    restart: always
+
+  web:
+    build:
+      context: ./webapp/fantasyrally
+      dockerfile: Dockerfile
+    container_name: fantasyrally-web
+    ports:
+      - "80:80"
+    environment:
+      - VITE_API_URL=http://api:4000
+      - VITE_STRIPE_PUBLISHABLE_KEY
+    restart: always
+
+networks:
+  default:
+    driver: bridge

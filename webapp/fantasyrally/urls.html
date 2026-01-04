@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FantasyRally — URLs & Views</title>
+  <style>body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:24px;line-height:1.5}h1{margin-bottom:8px}ul{margin-top:6px}</style>
+</head>
+<body>
+  <h1>FantasyRally — URLs & Views</h1>
+  <p>Use these URLs on your host (replace <code>your-host</code> with your domain or IP):</p>
+  <ul>
+    <li><strong>App (web / mobile web):</strong> <a href="/">http://your-host/</a></li>
+    <li><strong>Admin portal:</strong> <a href="/admin">http://your-host/admin</a></li>
+    <li><strong>API base:</strong> <code>http://your-host:4000</code> (or internal: <code>http://api:4000</code> in Docker)</li>
+  </ul>
+
+  <h2>Frontend views (SPA pages)</h2>
+  <p>The frontend exposes the following main views (select from the app navigation):</p>
+  <ul>
+    <li><strong>Viewer</strong> — main content gallery / list (default)</li>
+    <li><strong>3D Park</strong> — interactive 3D viewer / park scene</li>
+    <li><strong>Garage</strong> — user garage / collection</li>
+    <li><strong>Admin</strong> — administrative UI (requires admin access)</li>
+    <li><strong>Account / Auth</strong> — sign in / sign up / account details</li>
+    <li><strong>Payment / Deposit</strong> — create Stripe Checkout or PaymentIntent to deposit sweepcoins</li>
+  </ul>
+
+  <h2>Backend endpoints (selected)</h2>
+  <ul>
+    <li><code>/api/content</code> — list uploaded content</li>
+    <li><code>/api/upload</code> — POST file uploads (multipart/form-data)</li>
+    <li><code>/api/signup</code>, <code>/api/signin</code> — auth</li>
+    <li><code>/api/me</code> — current user (requires Bearer token)</li>
+    <li><code>/api/create-checkout-session</code> — create Stripe Checkout session (requires auth)</li>
+    <li><code>/webhook</code> — Stripe webhook endpoint (set <code>STRIPE_WEBHOOK_SECRET</code> if using signatures)</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>The admin UI is served at <code>/admin</code> and is a separate entry built as <code>admin.html</code>.</li>
+    <li>If you run the Docker compose setup, the web UI is on port 80 and the API on port 4000.</li>
+    <li>For mobile development use the Vite dev server and open <code>http://&lt;your-ip&gt;:5173</code> on your phone.</li>
+  </ul>
+
+</body>
+</html>
