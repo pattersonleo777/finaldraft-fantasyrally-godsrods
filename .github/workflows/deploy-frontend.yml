@@ -18,12 +18,10 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        working-directory: webapp/fantasyrally/mobile-app
-        run: npm ci
+        run: npm ci --prefix webapp/fantasyrally/mobile-app
 
       - name: Build
-        working-directory: webapp/fantasyrally/mobile-app
-        run: npm run build
+        run: npm run build --prefix webapp/fantasyrally/mobile-app
 
       - name: Create CNAME for custom domain
         run: echo 'godsrods.online' > webapp/fantasyrally/mobile-app/dist/CNAME
