@@ -18,7 +18,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm ci --prefix webapp/fantasyrally/mobile-app
+        run: npm install --prefix webapp/fantasyrally/mobile-app
 
       - name: Build
         run: npm run build --prefix webapp/fantasyrally/mobile-app
